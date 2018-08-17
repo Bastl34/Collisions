@@ -160,4 +160,5 @@ export {
 	Circle,
 	Polygon,
 	Point,
+	BVH
 };

@@ -1536,3 +1536,4 @@ exports.Result = Result;
 exports.Circle = Circle;
 exports.Polygon = Polygon;
 exports.Point = Point;
+exports.BVH = BVH;
