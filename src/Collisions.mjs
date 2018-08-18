@@ -142,6 +142,19 @@ class Collisions {
 	}
 
 	/**
+	 * Returns a list of potential collisions for a body
+	 * @param {Number} body bounding box min_x
+	 * @param {Number} body bounding box min_y
+	 * @param {Number} body bounding box max_x
+	 * @param {Number} body bounding box max_y
+	 * @param {Circle|Polygon|Point} body The body to test (optional)
+	 * @returns {Array<Body>}
+	 */
+	potentialsByBoundingBox(min_x, min_y, max_x, max_y, body) {
+		return this._bvh.potentialsByBoundingBox(min_x, min_y, max_x, max_y, body);
+	}
+
+	/**
 	 * Determines if two bodies are colliding
 	 * @param {Circle|Polygon|Point} target The target body to test against
 	 * @param {Result} [result = null] A Result object on which to store information about the collision

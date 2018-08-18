@@ -272,11 +272,25 @@ export default class BVH {
 	 * @returns {Array<Body>}
 	 */
 	potentials(body) {
-		const results = [];
 		const min_x   = body._bvh_min_x;
 		const min_y   = body._bvh_min_y;
 		const max_x   = body._bvh_max_x;
 		const max_y   = body._bvh_max_y;
+
+		return this.potentialsByBoundingBox(min_x, min_y, max_x, max_y, body);
+	}
+
+	/**
+	 * Returns a list of potential collisions for a body
+	 * @param {Number} body bounding box min_x
+	 * @param {Number} body bounding box min_y
+	 * @param {Number} body bounding box max_x
+	 * @param {Number} body bounding box max_y
+	 * @param {Circle|Polygon|Point} body The body to test (optional)
+	 * @returns {Array<Body>}
+	 */
+	potentialsByBoundingBox(min_x, min_y, max_x, max_y, body) {
+		const results = [];
 
 		let current       = this._hierarchy;
 		let traverse_left = true;
@@ -317,7 +331,7 @@ export default class BVH {
 				traverse_left = true;
 			}
 			else {
-				if(!branch && current !== body) {
+				if(!branch && body && current !== body) {
 					results.push(current);
 				}
 
