@@ -407,7 +407,7 @@ class BVH {
 				traverse_left = true;
 			}
 			else {
-				if(!branch && body && current !== body) {
+				if(!branch && current !== body) {
 					results.push(current);
 				}
 
